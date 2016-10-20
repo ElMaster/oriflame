@@ -1,0 +1,72 @@
+<div class="main-block-registration" ng-if="$state.current.data.main" ng-include="'views/common/block_registration.html'"></div>
+<div class="section-content nga-fast nga-stagger nga-slide-down"  ui-view></div>
+<div class="block-comments" ng-if="$state.current.data.main" ng-include="'views/common/block_comments.html'" style="min-height: 512px"></div>
+
+<div class="block-shares" ng-if="$state.current.data.urlPages != 'list'">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h3>Акции Орифлейм</h3>
+            </div>
+        </div>
+        <div class="row text-center-xs">
+            <div class="col-media col-sm-6 col-md-4 col-lg-3" ng-repeat="messages in getShares | orderBy: '-date' ">
+                <div class="shares-thumbnail">
+                    <div class="shares-item-thumbnail">
+                        <a href="#/shares/{{messages.url}}" title="">
+                            <img class="img-responsive" ng-src="uploads/{{messages.files}}" alt="">
+                        </a>
+                    </div>
+                    <div class="shares-item-inner">
+                        <p class="post-item-title">
+                            <a href="#/shares/{{messages.url}}" title="">{{messages.title | limitTo: 35 }}</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!--<div class="col-media col-sm-6 col-md-4 col-lg-3">-->
+                <!--<div class="shares-thumbnail">-->
+                    <!--<div class="shares-item-thumbnail">-->
+                        <!--<a href="" title="">-->
+                            <!--<img class="img-responsive" ng-src="http://oriconsultant.ru/wp-content/uploads/2016/09/50BB_D1-520x245.jpg" alt="">-->
+                        <!--</a>-->
+                    <!--</div>-->
+                    <!--<div class="shares-item-inner">-->
+                        <!--<p class="post-item-title">-->
+                            <!--<a href="" title="">Акция Орифлейм “Два в одном”</a>-->
+                        <!--</p>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-media col-sm-3 col-md-4 col-lg-3 hidden-sm">-->
+                <!--<div class="shares-thumbnail">-->
+                    <!--<div class="shares-item-thumbnail">-->
+                        <!--<a href="" title="">-->
+                            <!--<img class="img-responsive" ng-src="http://oriconsultant.ru/wp-content/uploads/2016/09/50BB_D1-520x245.jpg" alt="">-->
+                        <!--</a>-->
+                    <!--</div>-->
+                    <!--<div class="shares-item-inner">-->
+                        <!--<p class="post-item-title">-->
+                            <!--<a href="" title="">Акция Орифлейм “Два в одном”</a>-->
+                        <!--</p>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-media col-sm-3 hidden-sm hidden-md">-->
+                <!--<div class="shares-thumbnail">-->
+                    <!--<div class="shares-item-thumbnail">-->
+                        <!--<a href="" title="">-->
+                            <!--<img class="img-responsive" ng-src="http://oriconsultant.ru/wp-content/uploads/2016/09/50BB_D1-520x245.jpg" alt="">-->
+                        <!--</a>-->
+                    <!--</div>-->
+                    <!--<div class="shares-item-inner">-->
+                        <!--<p class="post-item-title">-->
+                            <!--<a href="" title="">Акция Орифлейм “Два в одном”</a>-->
+                        <!--</p>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        </div>
+    </div>
+</div>

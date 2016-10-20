@@ -1,0 +1,76 @@
+<div class="container" ng-controller="commentsListCtrl">
+    <div class="row">
+        <div class="col-xs-12">
+            <h1 style="margin-bottom: 40px;">Отзывы</h1>
+        </div>
+
+        <div class="col-xs-12 comments-pages">
+            <div class="row">
+                <ul class="list-unstyled">
+                    <li class="col-sm-6" element-this type="{{comment.$id}}" ng-repeat="comment in comments | filter: {moderator : true} | orderBy: '-date'">
+                        <div class="comments-author">
+                            <div class="pull-left">
+                                <img ng-src="uploads_comment/{{comment.files}}">
+                            </div>
+                            <div class="comments-names-rating">
+                                <div class="comments-names">{{comment.title}}</div>
+                                <small>{{comment.date | date:'dd.MM.yyyy'}}</small>
+                            </div>
+                        </div>
+                        <div class="comments-container">
+                            <p>{{comment.description}}</p>
+
+                            <div class="comments-container-rating text-right">
+                                <button href="javascript:;" class="btn btn-default" ng-init="isDateDisabled(comment)" ng-click="comment.rating = comment.rating + 1; commentsPlus(comment);">
+                                    <span class="comments-total">{{comment.rating || 0}}</span>
+                                </button>
+                            </div>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+
+
+
+
+        </div>
+
+
+    </div>
+    <hr/>
+    <div class="row">
+        <div class="col-xs-7">
+        <h2>Оставить отзыв</h2>
+            <div class="comment_marusia">
+                <div ng-if="sacsesfull" class="alert alert-success">
+                    {{sacsesfull}}
+                </div>
+
+                <form ng-if="!sacsesfull" name="commentAdd" ng-submit="commentsFn(comment); commentAdd.$setPristine();" class="form-validate" novalidate>
+
+                    <input type="hidden" ng-model="comment.moderator">
+                    <div class="form-group">
+                        <label>Имя</label>
+                        <input type="text" ng-model="comment.title" class="form-control" placeholder="Названия" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Описание</label>
+                        <textarea rows="5" ng-model="comment.description" class="form-control" placeholder="Описание" required></textarea>
+                    </div>
+                    <input type="file"   nv-file-select uploader="uploader"/><br/>
+                    <ul class="list-unstyled">
+                        <li ng-repeat="item in uploader.queue">
+                            <div ng-show="uploader.isHTML5" ng-thumb="{ file: item._file, height: 100 }" ng-init="comment.files = item.file.name"></div>
+                        </li>
+                    </ul>
+                    <button class="btn btn-success" type="submit" ng-disabled="commentAdd.$invalid">Отправить</button>
+
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>

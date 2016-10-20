@@ -1,0 +1,156 @@
+<div class="container" ng-controller="managerCtrl">
+    <div class="col-xs-12">
+        <uib-tabset class="tab-content">
+            <uib-tab class="tab-pane" heading="Новости и Акции">
+                <!--Shares.$add(shares); uploader.uploadAll(); shares = {};-->
+                <h2 class="font-weight-300">Добавить Новость или Акцию</h2>
+                <form name="sharesAdd" ng-submit="sharesFn(shares); sharesAdd.$setPristine();" class="form-validate" novalidate>
+                    <div class="form-group">
+                        <label>Названия</label>
+                        <input type="text" ng-model="shares.title" class="form-control" placeholder="Названия" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Описание</label>
+                        <textarea rows="5" ng-model="shares.description" class="form-control" placeholder="Описание" required></textarea>
+                    </div>
+                    <input type="file"   nv-file-select uploader="uploader"/><br/>
+                    <ul class="list-unstyled">
+                        <li ng-repeat="item in uploader.queue">
+                            <div ng-show="uploader.isHTML5" ng-thumb="{ file: item._file, height: 100 }" ng-init="shares.files = item.file.name"></div>
+                        </li>
+                    </ul>
+                    <div class="form-group">
+                        <label>Дата</label>
+                        <input type="date" ng-model="shares.date" ngMin="{{shares.date | date:'dd.MM.yyyy'}}" class="form-control"  placeholder="yyyy-MM-dd" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Url</label>
+                        <input type="text" ng-model="shares.url" class="form-control" placeholder="Url" required>
+                    </div>
+                    <div class="form-group">
+                        <summernote ng-model="shares.text" config="options"></summernote>
+                    </div>
+                    <button class="btn btn-success" type="submit" ng-disabled="sharesAdd.$invalid">Отправить</button>
+
+                </form>
+
+                <div ng-repeat="messages in getShares.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage)) | orderBy: '-date' ">
+
+                    <article class="shares-post">
+
+                        <a href="#/shares/{{messages.url}}" class="pull-left">
+                            <img class="img-responsive" ng-src="uploads/{{messages.files}}">
+                            <div class="marcker-icon">
+                                <span class="marcker-icon-inner">
+                                    <span class="glyphicon glyphicon-paperclip"></span>
+                                </span>
+                            </div>
+                        </a>
+
+                        <div class="shares-post-container">
+                            <a href="javascript:;" class="btn btn-danger pull-right" ng-click="getShares.$remove(messages)"><span class="glyphicon glyphicon-remove"></span></a>
+
+                            <a href="javascript:;" class="btn btn-info pull-right" ng-click="idNull = !idNull" style="margin-right: 10px"><span class="glyphicon glyphicon-pencil"></span></a>
+
+                            <small class="data-shares-post">{{messages.date | date:'dd.MM.yyyy'}}</small>
+                            <h4><a href="#/shares/{{messages.url}}">{{messages.title}}</a></h4>
+                            <p>{{messages.description}}</p>
+
+
+                            <a href="#/shares/{{messages.url}}" class="read-more pull-right">Подробнее</a>
+                        </div>
+
+                    </article>
+                    <div ng-if="idNull">
+                        <form name="sharesAdd" class="form-validate" novalidate>
+                            <div class="form-group">
+                                <label>Названия</label>
+                                <input type="text" ng-model="messages.title" ng-change="getShares.$save(messages)" class="form-control" placeholder="Названия" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Описание</label>
+                                <textarea rows="5" ng-model="messages.description" ng-change="getShares.$save(messages)" class="form-control" placeholder="Описание" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <input type="file" nv-file-select uploader="uploader"/>
+                                </div>
+                            <ul class="list-unstyled">
+                                <li ng-repeat="item in uploader.queue">
+                                    <div ng-show="uploader.isHTML5" ng-thumb="{ file: item._file, height: 100 }" ng-init="messages.files = item.file.name"></div>
+                                    <button type="button" class="btn btn-success" ng-click="item.upload(); getShares.$save(messages)" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+                                        <span class="glyphicon glyphicon-upload"></span> Upload
+                                    </button>
+                                </li>
+                            </ul>
+                            <div class="form-group">
+                                <label>Url</label>
+                                <input type="text" ng-model="messages.url" ng-change="getShares.$save(messages)" class="form-control" placeholder="Url" required>
+                            </div>
+                            <div class="form-group">
+                                <summernote ng-model="messages.text" ng-change="getShares.$save(messages)" config="options"></summernote>
+                            </div>
+
+
+                        </form>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12" ng-if="getShares.length > 10">
+                        <ul uib-pagination next-text="Вперед" previous-text="Назад" total-items="getShares.length" ng-model="currentPage" items-per-page="itemsPerPage"  ng-change="pageChanged()"></ul>
+
+                    </div>
+                </div>
+            </uib-tab>
+
+
+
+
+
+
+            <uib-tab  class="tab-pane" heading="Отзывы">
+                <h2 class="font-weight-300" style="margin-bottom: 40px;">Отзывы</h2>
+                <div class="comments-pages">
+                    <div class="row">
+                        <ul class="list-unstyled">
+                            <li class="col-sm-6" element-this type="{{comment.$id}}" ng-repeat="comment in comments | orderBy: '-date'">
+                                <div class="comments-author">
+                                    <div class="pull-left">
+                                        <img ng-src="uploads_comment/{{comment.files}}">
+                                    </div>
+                                    <div class="comments-names-rating">
+                                        <a href="javascript:;" class="btn btn-danger pull-right" ng-click="comments.$remove(comment)"><span class="glyphicon glyphicon-remove"></span></a>
+
+                                        <div class="comments-names">{{comment.title}}</div>
+                                        <small>{{comment.date | date:'dd.MM.yyyy'}}</small>
+                                    </div>
+
+                                </div>
+                                <div class="comments-container">
+                                    <p>{{comment.description}}</p>
+
+                                    <div class="comments-container-rating text-right form-horizontal">
+
+                                        <div class="form-group">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" ng-model="comment.moderator" ng-change="comments.$save(comment)"> Одобрить
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                </div>
+
+
+
+            </uib-tab>
+        </uib-tabset>
+    </div>
+</div>

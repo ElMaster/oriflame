@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="row">
+        <!--<div class="col-sm-2 text-center-xs">-->
+        <!---->
+        <!--</div>-->
+        <div class="col-sm-12 text-center-xs">
+            <div class="widget-navigation-btn visible-xs pull-left" ng-click="app.layout.isMobileNav = !app.layout.isMobileNav"><span></span></div>
+            <div class="logo-slogan">
+                <a ui-sref="main.home" title="" rel="home">
+                    <img ng-src="img/logo2.png" alt=""/>
+                </a>
+            </div>
+            <div class="widget-register visible-lg visible-xs">
+                <a ng-if="!firebaseUser" href="#" class="btn btn-default btn-register"><span class="glyphicon glyphicon-edit"></span> Регистрация</a>
+                <a ng-if="firebaseUser" href="javascript:;" ng-click="auth.$signOut(); $state.go('admin')" class="btn btn-default btn-register"><span class="glyphicon glyphicon-edit"></span> Выйти</a>
+
+            </div>
+            <div class="widget-navigation hidden-xs">
+                <div class="widget-navigation-content">
+                    <ul class="widget-navigation-ul list-unstyled">
+                        <li class="shops" ui-sref-active="active">
+                            <a ui-sref="main.home" class="sf-with-ul"><span>Главная</span> о нас</a>
+                        </li>
+                        <li class="shops" ui-sref-active="active">
+                            <a ui-sref="main.catalog" class="sf-with-ul"><span>Каталог</span> косметики</a>
+                        </li>
+                        <li class="shops" ui-sref-active="active">
+                            <a ui-sref="main.business" class="sf-with-ul"><span>Бизнес</span> с Орифлэйм</a>
+                        </li>
+                        <li class="shops" data-ng-class="{active: $state.includes('main.shares')}">
+                            <a ui-sref="main.shares.list" class="sf-with-ul"><span>Акции</span> статьи</a>
+                        </li>
+                        <li class="shops" ui-sref-active="active">
+                            <a ui-sref="main.comment" class="sf-with-ul"><span>Коментарии</span> о продукции</a>
+                        </li>
+                        <li class="shops" ui-sref-active="active">
+                            <a ui-sref="main.contacts" class="sf-with-ul"><span>Конатакты</span> пишите</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

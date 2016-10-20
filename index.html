@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js" ng-app="oriflameApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <!--<script>document.write('<base href="' + document.location + '" />');</script>-->
+    <base href="http://orflame.loc/">
+
+    <title>Oriflame</title>
+
+    <meta id="load_styles_before">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/navigation.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/nga.min.css">
+    <!-- oclazyload stylesheets before this tag -->
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body ng-controller="AppCtrl" class="widget-navigation-loaded" ng-class="{'widget-navigation-open': app.layout.isMobileNav}">
+    <ng-include src="'views/common/widget_navigation.html'"></ng-include>
+    <preloader class="preloader ng-hide"></preloader>
+
+    <div class="wrapper" id="outer-wrap">
+        <div class="main-wrapper">
+            <header class="affix" ng-include="'views/common/header.html'"></header>
+            <div class="banner" ng-if="$state.current.data.main" ng-include="'views/common/banner.html'"></div>
+            <div class="banner-defolt" ng-if="!$state.current.data.main"></div>
+
+            <main ui-view class="nga-fast nga-stagger nga-slide-down"></main>
+
+
+        </div>
+    </div>
+
+    <footer ng-include="'views/common/footer.html'"></footer>
+
+    <!-- build:js({.tmp,app}) scripts/development.js -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/firebase/firebase.js"></script>
+    <script>
+        var config = {
+            apiKey: "AIzaSyDUxwukRm1UpvbwjekwhT0Hi_lmY7t_YaU",
+            authDomain: "platform-422d4.firebaseapp.com",
+            databaseURL: "https://platform-422d4.firebaseio.com",
+            storageBucket: "platform-422d4.appspot.com",
+            messagingSenderId: "576562500343"
+        };
+        firebase.initializeApp(config);
+
+
+    </script>
+    <script src="bower_components/angularfire/dist/angularfire.min.js"></script>
+
+    <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="bower_components/oclazyload/dist/ocLazyLoad.min.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+
+    <script src="js/app.js"></script>
+    <script src="js/development.js"></script>
+    <script src="js/config.router.js"></script>
+
+
+    <script src="js/controllers/main.js"></script>
+    <script src="js/controllers/catalog.js"></script>
+    <script src="js/directives/preloader.js"></script>
+
+    <script src="js/controllers/shares_list.js"></script>
+    <script src="js/controllers/shares_detail.js"></script>
+    <script src="js/controllers/admin.js"></script>
+    <script src="js/controllers/comments.js"></script>
+    <div id="load_script_before"></div>
+
+</body>
+</html>

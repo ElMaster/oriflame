@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <h2>Отзывы клиентов</h2>
+        </div>
+        <div class="col-sm-4 comment-post margin-responsive" element-this type="{{comment.$id}}" ng-repeat="comment in comments | filter: {moderator : true} | orderBy: '-date'">
+            <div class="comment-post-avatar">
+                <div class="post-avatar-user pull-left">
+                    <img ng-src="uploads_comment/{{comment.files}}">
+                </div>
+                <div class="post-avatar-names">
+                    {{comment.title}}<br/>
+                    <small>{{comment.date | date:'dd.MM.yyyy'}}</small>
+                </div>
+            </div>
+            <div class="comment-post-content">
+                <p>{{comment.description}}</p>
+            </div>
+        </div>
+        <div class="col-xs-12 text-center">
+            <a  ui-sref="main.comment" class="btn btn-info btn-lg btn-style">Все отзывы</a>
+        </div>
+    </div>
+</div>

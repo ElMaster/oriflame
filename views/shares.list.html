@@ -1,0 +1,35 @@
+<div class="container sharesList" ng-controller="sharesListCtrl">
+    <div class="col-xs-12">
+
+        <h1>Новости и Акции компании</h1>
+
+        <div ng-repeat="messages in getShares.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage)) | orderBy: '-date' ">
+            <article class="shares-post">
+
+                <a href="#/shares/{{messages.url}}" class="pull-left">
+                    <img class="img-responsive" ng-src="uploads/{{messages.files}}">
+                    <div class="marcker-icon">
+                                <span class="marcker-icon-inner">
+                                    <span class="glyphicon glyphicon-paperclip"></span>
+                                </span>
+                    </div>
+                </a>
+
+                <div class="shares-post-container">
+
+                    <small class="data-shares-post">{{messages.date | date:'dd.MM.yyyy'}}</small>
+                    <h4><a href="#/shares/{{messages.url}}">{{messages.title}}</a></h4>
+                    <p>{{messages.description}}</p>
+                    <a href="#/shares/{{messages.url}}" class="read-more pull-right">Подробнее</a>
+                </div>
+
+            </article>
+        </div>
+        <div class="row">
+            <div class="col-xs-12" ng-if="getShares.length > 10">
+                <ul uib-pagination next-text="Вперед" previous-text="Назад" total-items="getShares.length" ng-model="currentPage" items-per-page="itemsPerPage"  ng-change="pageChanged()"></ul>
+            </div>
+        </div>
+
+    </div>
+</div>

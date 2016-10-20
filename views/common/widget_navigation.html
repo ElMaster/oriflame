@@ -1,0 +1,56 @@
+<div class="widget-navigation-background" ng-swipe-left="app.layout.isMobileNav = false">
+
+    <div id="mobile-widget-navigation" style="min-height: 415px;">
+        <div class="td-mobile-close">
+            <a href ng-click="app.layout.isMobileNav = !app.layout.isMobileNav" class="close-mobile-widget">×</a>
+        </div>
+        <div class="td-mobile-container">
+            <div class="logo-slogan">
+                <a ui-sref="main.home" ng-click="app.layout.isMobileNav = !app.layout.isMobileNav">
+                    <img ng-src="img/logo2.png" alt=""/>
+                </a>
+            </div>
+            <div class="menu-td-header-container">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <ul class="td-mobile-main-menu list-unstyled text-center">
+                                <li class="menu-item" ui-sref-active="active">
+                                    <a ui-sref="main.home" ng-click="app.layout.isMobileNav = !app.layout.isMobileNav">
+                                        <span>Главная</span> о нас
+                                    </a>
+                                </li>
+                                <li class="menu-item" ui-sref-active="active">
+                                    <a ui-sref="main.catalog" ng-click="app.layout.isMobileNav = !app.layout.isMobileNav">
+                                        <span>Каталог</span> косметики
+                                    </a>
+                                </li>
+                                <li class="menu-item" ui-sref-active="active">
+                                    <a ui-sref="main.business" ng-click="app.layout.isMobileNav = !app.layout.isMobileNav">
+                                        <span>Бизнес</span> с Орифлэйм
+                                    </a>
+                                </li>
+                                <li class="menu-item" ui-sref-active="active">
+                                    <a ui-sref="main.shares.list" ng-click="app.layout.isMobileNav = !app.layout.isMobileNav">
+                                        <span>Акции</span> статьи
+                                    </a>
+                                </li>
+                                <li class="menu-item" ui-sref-active="active">
+                                    <a ui-sref="main.video" ng-click="app.layout.isMobileNav = !app.layout.isMobileNav">
+                                        <span>Выбинары</span> видеогалерея
+                                    </a>
+                                </li>
+                                <li class="menu-item" ui-sref-active="active">
+                                    <a ui-sref="main.contacts" ng-click="app.layout.isMobileNav = !app.layout.isMobileNav">
+                                        <span>Конатакты</span> пишите
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

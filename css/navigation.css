@@ -1,0 +1,130 @@
+.widget-navigation-background {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+    position: fixed;
+    display: block;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    visibility: hidden;
+    transform: translate3d(-100%, 0, 0);
+    -webkit-transform: translate3d(-100%, 0, 0);
+    -moz-transform: translate3d(-100%, 0, 0);
+    -ms-transform: translate3d(-100%, 0, 0);
+    -o-transform: translate3d(-100%, 0, 0);
+
+
+    overflow: auto;
+
+
+    opacity: 0.98;
+    background: #333145;
+    background: -moz-linear-gradient(top, #333145 0%, #b8333e 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, #333145), color-stop(100%, #b8333e));
+    background: -webkit-linear-gradient(top, #333145 0%, #b8333e 100%);
+    background: -o-linear-gradient(top, #333145 0%, #b8333e 100%);
+    background: -ms-linear-gradient(top, #333145 0%, #b8333e 100%);
+    background: linear-gradient(to bottom, #333145 0%, #b8333e 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333145', endColorstr='#b8333e', GradientType=0);
+}
+.widget-navigation-background:before {
+    /*content: '';*/
+    /*width: 100%;*/
+    /*height: 100%;*/
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*left: 0;*/
+
+}
+#mobile-widget-navigation {
+    padding: 0;
+    position: absolute;
+    width: 100%;
+    height: auto;
+    top: 0;
+    z-index: 9999;
+    visibility: hidden;
+    transform: translate3d(-99%, 0, 0);
+    -webkit-transform: translate3d(-99%, 0, 0);
+    -moz-transform: translate3d(-99%, 0, 0);
+    -ms-transform: translate3d(-99%, 0, 0);
+    -o-transform: translate3d(-99%, 0, 0);
+    left: -1%;
+    height: 1px;
+    overflow: hidden;
+}
+
+
+.widget-navigation-loaded .widget-navigation-background,
+.widget-navigation-loaded #mobile-widget-navigation{
+    visibility: visible;
+    -webkit-transition: transform 0.5s cubic-bezier(0.79, 0.14, 0.15, 0.86);
+    -moz-transition: transform 0.5s cubic-bezier(0.79, 0.14, 0.15, 0.86);
+    -o-transition: transform 0.5s cubic-bezier(0.79, 0.14, 0.15, 0.86);
+    transition: transform 0.5s cubic-bezier(0.79, 0.14, 0.15, 0.86);
+}
+.widget-navigation-open .widget-navigation-background {
+    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+}
+.widget-navigation-open #mobile-widget-navigation {
+    height: auto;
+    overflow: auto;
+    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    left: 0;
+}
+.widget-navigation-open #outer-wrap {
+
+}
+@media (max-width:767px) {
+    #outer-wrap {
+        -webkit-transition: transform 0.7s ease;
+        -moz-transition: transform 0.7s ease;
+        -o-transition: transform 0.7s ease;
+        transition: transform 0.7s ease;
+        -webkit-transform-origin: 50% 200px 0;
+        -moz-transform-origin: 50% 200px 0;
+        -o-transform-origin: 50% 200px 0;
+        transform-origin: 50% 200px 0;
+        -webkit-box-shadow: 0 0 46px #f396c2;
+        -moz-box-shadow: 0 0 46px #f396c2;
+        box-shadow: 0 0 46px #f396c2;
+    }
+    .widget-navigation-open #outer-wrap {
+        /*position: fixed;*/
+        transform: scale3d(0.95, 0.95, 0.95);
+        -webkit-transform: scale3d(0.95, 0.95, 0.95);
+        -moz-transform: scale3d(0.95, 0.95, 0.95);
+        -ms-transform: scale3d(0.95, 0.95, 0.95);
+        -o-transform: scale3d(0.95, 0.95, 0.95);
+        -webkit-box-shadow: 0 0 46px #f396c2;
+        -moz-box-shadow: 0 0 46px #f396c2;
+        box-shadow: 0 0 46px #f396c2;
+    }
+}
+
+
+.td-mobile-close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1000;
+}
+.td-mobile-close .glyphicon-remove-circle {
+    height: 70px;
+    width: 70px;
+    line-height: 70px;
+    font-size: 21px;
+    color: #fff;
+    top: 4px;
+    position: relative;
+}
+

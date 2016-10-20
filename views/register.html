@@ -1,0 +1,47 @@
+<div class="full-height">
+    <div class="center-wrapper ng-scope" data-ng-controller="sessionCtrl">
+        <div class="center-content">
+            <div class="row no-margin">
+                <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+                    <h2 class="text-center" style="font-weight: 300">Регистрация</h2>
+
+
+                    <form name="adminForm" ng-submit="createUser();" role="form"  class="form-validate" novalidate>
+                        <div class="alert alert-warning" ng-if="error">
+                            {{error.message}}
+                        </div>
+                        <div class="form-group">
+                            <input type="email" ng-model="email" class="form-control input-lg" placeholder="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" ng-model="password" class="form-control input-lg" placeholder="Password" required>
+                        </div>
+                        <button class="btn btn-success btn-block btn-lg mb15" type="submit" ng-disabled="adminForm.$invalid">
+                            <span>Войти</span>
+                        </button>
+
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<style>
+    .full-height {
+        height: 100%;
+        margin-top: 10%;
+    }
+    main {
+        height: 100%;
+    }
+    .main-wrapper {
+        height: 100%;
+        padding: 0;
+    }
+    footer {
+        display: none;
+    }
+</style>
