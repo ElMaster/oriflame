@@ -233,5 +233,15 @@ angular
 
                     }
                 })
+                .state('main.contacts', {
+                    url: '/contacts',
+                    templateUrl: 'views/contacts.html',
+                    data: {
+                        title: 'Контакты',
+                        main: false,
+                        urlPages: 'contacts'
+                    }
+
+                })
         }
     ]);

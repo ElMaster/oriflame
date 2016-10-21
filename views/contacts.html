@@ -1,0 +1,119 @@
+<div class="container" ng-controller="contactsCtrl">
+
+    <div class="row">
+        <div class="col-xs-12">
+
+            <h2 class="font-weight-300">Что нужно чтобы зарегистрироваться в Орифлейм?</h2>
+            <br/>
+            <blockquote><p>Зарегистрироваться в Орифлейм очень просто. Для этого достаточно заполните <strong>форму
+                регистрации на этой страничке</strong>.</p>
+
+                <p>Эти данные будут необходимы ВАМ для размещения заказов. Кроме этого, мы выделим для ВАС персонального
+                    менеджера, который свяжется с ВАМИ и будет работать с ВАМИ весь период сотрудничества с компанией
+                    Орифлейм</p>
+                <p>Менеджер поможет ВАМ разместить первый заказ, проконсультирует по продукции, поможет выбрать
+                    ближайший к ВАМ офис, расскажет о том, как оформить заказ, как оплатить заказ. Для всех
+                    консультантов, мы предоставляем бесплатное дистанционное обучение и круглосуточную информационную
+                    поддержку.</p></blockquote>
+            <h3 style="text-align: center;">Форма регистрации в Орифлейм</h3>
+            <p>При заполнении анкеты будьте особенно внимательны. Не указывайте неверный или вымышленный адрес.эл.почты,
+                или неверный телефон. На указанный вами эл.адрес и сотовый телефон, после регистрации, будет отправлен
+                ваш персональный номер консультанта и пароль. Вводя неверные данные вы не получите эту важную
+                информацию</p>
+            <br/>
+            <p><strong>Поля помеченные значком <span class="text-red font-weight-600">*</span> обязательны для
+                заполнения<br><br></strong></p>
+
+        </div>
+
+    </div>
+    <div class="row">
+
+
+<div class="alert alert-success" ng-if="status == 200">
+   Ваша регистрация прошла успешно!
+</div>
+<div class="alert alert-warning" ng-if="status == 0">
+    Ваша регистрация прошла Не удачно!
+</div>
+        <form name="registerForm" class="register-form form-validate" ng-submit="registerFn(register); registerForm.$setPristine();" novalidate>
+            <div class="col-md-7">
+                <input type="text" ng-model="register._gotcha" style="display:none" />
+                <input type="hidden" ng-model="register._cc" />
+                <!--<input type="hidden" name="register._format" />-->
+                <div class="form-group">
+                    <label class="control-label">Ф.И.О. (полностью) <span class="text-red">*</span></label>
+                    <input type="text" ng-model="register.username" class="form-control" placeholder="" required>
+
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Адрес эл.почты <span class="text-red">*</span></label>
+                    <input type="email" ng-model="register.email" class="form-control" placeholder="" required>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Серия и номер паспорта <span class="text-red">*</span></label>
+                    <input type="text" ng-model="register.passport" class="form-control" placeholder="" required>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Дата рождения <span class="text-red">*</span></label>
+                    <input type="text" ng-model="register.data" class="form-control" placeholder="" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">Индекс <span class="text-red">*</span></label>
+                    <input type="text" ng-model="register.indexing" class="form-control" placeholder="" required>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Адрес фактического проживания (область, насел.пункт, улица, дом,
+                        квартира)</label>
+                    <input type="text" ng-model="register.address" class="form-control" placeholder="" required>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Сотовый телефон <span class="text-red">*</span></label>
+                    <input type="text" ng-model="register.phones" class="form-control" placeholder="" required>
+                </div>
+
+
+            </div>
+            <div class="col-md-5">
+                <div class="form-group">
+                    <label class="control-label">Ваша цель регистрации в Oriflame? <span
+                            class="text-red">*</span></label>
+                    <div class="checkbox" style="padding-left: 20px">
+                        <label>
+                            <input type="checkbox"  ng-model="register.register1" ng-true-value="'Покупать со скидкой и просто экономить'" ng-false-value="'Нет'"> Покупать со скидкой и просто экономить
+                        </label>
+                        <label>
+                            <input type="checkbox"  ng-model="register.register2" ng-true-value="'Дополнительный заработок'" ng-false-value="'Нет'"> Дополнительный заработок
+                        </label>
+                        <label>
+                            <input type="checkbox"  ng-model="register.register3" ng-true-value="'Серьезный собственный бизнес'" ng-false-value="'Нет'"> Серьезный собственный бизнес
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Вы являетесь действующим консультантом Oriflame? <span
+                            class="text-red">*</span></label>
+                    <div class="checkbox">
+                        <label>
+                            <input type="radio" name="optionsRadios" ng-model="register.opros" value="Нет, не являюсь, ранее не была зарегистрирована"> Нет, не являюсь, ранее не была зарегистрирована
+                        </label>
+                        <label>
+                            <input type="radio" name="optionsRadios" ng-model="register.opros" value="Ранее была зарегистрирована, но номер не действует"> Ранее была зарегистрирована, но номер не действует
+                        </label>
+                        <label>
+                            <input type="radio" name="optionsRadios" ng-model="register.opros" value="Являюсь действующим консультантом Oriflame с активным номером"> Являюсь действующим консультантом Oriflame с активным номером
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Задайте ваш вопрос перед регистрацией</label>
+                    <textarea style="height: 171px;" ng-model="register.message" class="form-control"></textarea>
+                </div>
+                <button type="submit" class="btn btn-success btn-lg" ng-disabled="registerForm.$invalid">Зарегистрироваться в Орифлэйм</button>
+            </div>
+        </form>
+
+    </div>
+
+</div>
